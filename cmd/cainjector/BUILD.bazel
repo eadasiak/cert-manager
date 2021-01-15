@@ -18,7 +18,7 @@ go_library(
 go_binary(
     name = "cainjector",
     embed = [":go_default_library"],
-    pure = "on",
+    pure = "off",
     visibility = ["//visibility:public"],
 )
 

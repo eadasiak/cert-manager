@@ -23,7 +23,7 @@ go_image(
 go_binary(
     name = "app",
     embed = ["@org_letsencrypt_pebble//cmd/pebble:go_default_library"],
-    pure = "on",
+    pure = "off",
 )
 
 filegroup(

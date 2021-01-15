@@ -20,6 +20,7 @@ go_library(
 go_binary(
     name = "api-migration",
     embed = [":go_default_library"],
+    pure = "off",
     visibility = ["//visibility:public"],
 )
 

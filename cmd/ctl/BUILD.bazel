@@ -16,7 +16,7 @@ go_binary(
     name = "ctl",
     out = "kubectl-cert_manager",
     embed = [":go_default_library"],
-    pure = "on",
+    pure = "off",
     visibility = ["//visibility:public"],
 )
 
