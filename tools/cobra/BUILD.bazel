@@ -21,6 +21,7 @@ go_library(
 go_binary(
     name = "cobra",
     embed = [":go_default_library"],
+    pure = "off",
     visibility = ["//visibility:public"],
 )
 
