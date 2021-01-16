@@ -10,7 +10,7 @@ A quick list of the modifications made are:
 - explicitly set `pure = "off"` on all `go_binary` targets so that `cgo` is enabled
 
 ```bash
-docker run -e USER="$(id -u)" -e DOCKER_REGISTRY=${DOCKER_REGISTRY} -u="$(id -u)" -v $(pwd):/src/workspace -v /tmp/build_output:/tmp/build_output -v /var/run/docker.sock:/var/run/docker.sock -w /src/workspace l.gcr.io/google/bazel:latest --output_user_root=/tmp/build_output run --stamp --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64 //build:server-images
+docker run -e DOCKER_REGISTRY=${DOCKER_REGISTRY} -e APP_VERSION=${APP_VERSION} -v $(pwd):/src/workspace -v /tmp/build_output:/tmp/build_output -v /var/run/docker.sock:/var/run/docker.sock -w /src/workspace l.gcr.io/google/bazel:latest --output_user_root=/tmp/build_output run --stamp --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64 //build:server-images
 ```
 
 This will create image tarballs in the `/tmp/build_output/.../execroot/com_github_jetstack_cert_manager/bazel-out/k8-fastbuild/bin/build` directory.
