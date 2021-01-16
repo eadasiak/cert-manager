@@ -25,12 +25,21 @@ http_archive(
     ],
 )
 
-load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+load("@io_bazel_rules_go//go:deps.bzl", "go_download_sdk", "go_register_toolchains", "go_rules_dependencies")
 
 go_rules_dependencies()
 
+go_download_sdk(
+    name = "go_sdk",
+    sdks = {
+       "linux_amd64": ("go1.15.5b5.linux-amd64.tar.gz", "9c97488137f1f560b3fff0d8a2a9c45d2de8790fb8952a42b46cc4633528fc48"),
+    },
+    urls = ["https://storage.googleapis.com/go-boringcrypto/{}"],
+)
+
+
 go_register_toolchains(
-    go_version = "1.15",
+#    go_version = "host" (for use with redhat go-toolset fips shim)
     nogo = "@//hack/build:nogo_vet",
 )
 
