@@ -2,7 +2,7 @@
 
 ## Intro
 
-This repository is a fork of the official [cert-manager.io](https://github.com/jetstack/cert-manager.git) repository.  The changes introduced by Adobe are strictly for building cert-manager with FIPS 140-2 compliant libraries.  In this case, there's a dependency on the build host's version of golang being FIPS certified.  RedHat provides such an implementation with [`go-toolset`](https://developers.redhat.com/blog/2019/06/24/go-and-fips-140-2-on-red-hat-enterprise-linux/), however there are some important caveats:
+This repository is a fork of the official [cert-manager.io](https://github.com/jetstack/cert-manager.git) repository.  The changes introduced by Adobe are strictly for building cert-manager with FIPS 140-2 certified libraries.  This particular branch was created to utilize a host-based solution to the lack of a compliant crypto library in the standard version of golang.  RedHat provides a certified implementation with [`go-toolset`](https://developers.redhat.com/blog/2019/06/24/go-and-fips-140-2-on-red-hat-enterprise-linux/), however there are some important caveats:
 
 - CentOS 7/RHEL 7 have an ancient version of golang in their `go-toolset`.  Version 1.10 is the latest available.
 - CentOS 8/RHEL 8 has a more recent version (1.14 at the time of writing), but CentOS 8 has been deprecated.  A new program for free use of RHEL 8 is planned.  `cert-manager` release 1.1 is currently pinned to golang version 1.15, but compiles with 1.14.
