@@ -95,11 +95,18 @@ generate:
 ################
 images:
 	APP_VERSION=$(APP_VERSION) \
-	DOCKER_REGISTRY=$(DOCKER_REPO) \
+	DOCKER_REGISTRY=$(DOCKER_REGISTRY) \
 	bazel run \
 		--stamp \
 		--platforms=@io_bazel_rules_go//go/toolchain:linux_amd64 \
 		//build:server-images
+
+images-push:
+	APP_VERSION=$(APP_VERSION) \
+	DOCKER_REGISTRY=$(DOCKER_REGISTRY) \
+	docker push $(DOCKER_REGISTRY)/cert-manager-webhook:$(APP_VERSION)
+	docker push $(DOCKER_REGISTRY)/cert-manager-controller:$(APP_VERSION)
+	docker push $(DOCKER_REGISTRY)/cert-manager-cainjector:$(APP_VERSION)
 
 ctl:
 	bazel build //cmd/ctl
